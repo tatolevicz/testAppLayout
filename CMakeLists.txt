@@ -7,15 +7,24 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.2 COMPONENTS Quick REQUIRED)
 
+
+qt_add_resources(
+    QRC_FILES
+    UiResources.qrc
+)
+
 qt_add_executable(appTestQmlApp
     main.cpp
+    ${QRC_FILES}
 )
 
 qt_add_qml_module(appTestQmlApp
     URI TestQmlApp
     VERSION 1.0
-    QML_FILES main.qml 
+    QML_FILES
+    main.qml
 )
+
 
 set_target_properties(appTestQmlApp PROPERTIES
     MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
